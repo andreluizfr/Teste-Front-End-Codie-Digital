@@ -1,9 +1,10 @@
 import Breadcumb from "../../components/Breadcrumb";
+import Layout from "../../components/Layout";
 import { Main, SubtitleText, TitleText, Text } from "./styles";
 
 export default function About() {
   return (
-    <>
+    <Layout>
       <Breadcumb ordenedLabels={["Home", "Quem Somos"]} pageDescription="A maior rede de tratamentos de pokémon."/>
       
       <Main>
@@ -32,7 +33,7 @@ export default function About() {
         </Text>
 
       </Main>
-    </>
+    </Layout>
   )
 }
 
