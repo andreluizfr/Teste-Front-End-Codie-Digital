@@ -23,7 +23,7 @@ export default function Breadcrumb({ ordenedLabels, pageDescription }: breadcrum
         {ordenedLabels.map((label, index)=>{
           if(index===ordenedLabels.length-1) {
             return (
-              <Link href={convertLabelToLink(label)} key={"BreadcumbLink"+index}>
+              <Link href={convertLabelToLink(label)} key={"BreadcrumbLink"+index}>
                 <BreadcrumbLink>{label}</BreadcrumbLink>
               </Link>
             )
@@ -31,7 +31,7 @@ export default function Breadcrumb({ ordenedLabels, pageDescription }: breadcrum
           else {
             return (
               <>
-                <Link href={convertLabelToLink(label)} key={"BreadcumbLink"+index}>
+                <Link href={convertLabelToLink(label)} key={"BreadcrumbLink"+index}>
                   <BreadcrumbLink>{label}</BreadcrumbLink>
                 </Link>
                 {">"}
