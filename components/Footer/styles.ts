@@ -11,5 +11,5 @@ export const FooterText = styled.p<{}>`
   color: white;
   text-align: center;
   font-size: var(--font-size-medium);  
-  font-weight: var(--font-weigth-normal);
+  font-weight: var(--font-weight-normal);
 `;

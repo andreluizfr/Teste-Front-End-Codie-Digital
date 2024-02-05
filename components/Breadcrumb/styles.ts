@@ -18,13 +18,13 @@ export const BreadcrumbLinks = styled.div<{}>`
 
   color: var(--font-secondary-color); //para ">"
   font-size: var(--font-size-smaller); //para ">"
-  font-weight: var(--font-weigth-light); //para ">"
+  font-weight: var(--font-weight-light); //para ">"
 `;
 
 export const BreadcrumbLink = styled.span<{}>`
   color: var(--font-secondary-color);
   font-size: var(--font-size-small);
-  font-weight: var(--font-weigth-bold);
+  font-weight: var(--font-weight-bold);
   
   cursor: pointer;
 `
@@ -32,7 +32,7 @@ export const BreadcrumbLink = styled.span<{}>`
 export const PageTitle = styled.p<{}>`
   color: var(--font-secondary-color);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weigth-bold);
+  font-weight: var(--font-weight-bold);
 `;
 
 export const PageDescription = styled.p<{}>`
@@ -40,5 +40,5 @@ export const PageDescription = styled.p<{}>`
 
   color: var(--font-secondary-color);
   font-size: var(--font-size-small);
-  font-weight: var(--font-weigth-light);
+  font-weight: var(--font-weight-light);
 `;

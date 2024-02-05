@@ -39,7 +39,7 @@ export const LogoText = styled.span<{ $hide: boolean; }>`
 
   color: var(--font-secondary-color);
   font-size: var(--font-size-large);
-  font-weight: var(--font-weigth-bold);
+  font-weight: var(--font-weight-bold);
   white-space: nowrap;
 `;
 

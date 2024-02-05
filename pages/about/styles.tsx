@@ -17,7 +17,7 @@ export const TitleText = styled.h1<{}>`
   width: 100%;
   text-align: left;
   color: var(--font-primary-color);
-  font-weight: var(--font-weigth-bold);
+  font-weight: var(--font-weight-bold);
   font-size: var(--font-size-great-medium);
   margin-bottom: 2rem;
 `;
@@ -26,7 +26,7 @@ export const SubtitleText = styled.h2<{}>`
   width: 100%;
   text-align: left;
   color: var(--font-primary-color);
-  font-weight: var(--font-weigth-semi-bold);
+  font-weight: var(--font-weight-semi-bold);
   font-size: var(--font-size-medium);
   margin-bottom: 2rem;
 `;
@@ -35,7 +35,7 @@ export const Text = styled.h2<{}>`
   width: 100%;
   text-align: left;
   color: var(--font-primary-color);
-  font-weight: var(--font-weigth-semi-bold);
+  font-weight: var(--font-weight-semi-bold);
   font-size: var(--font-size-great-normal);
   margin-bottom: 2rem;
 `;

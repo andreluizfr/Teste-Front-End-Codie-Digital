@@ -25,5 +25,5 @@ export const MainText = styled.p<{}>`
   color: var(--font-secondary-color);
   text-align: center;
   font-size: var(--font-size-xxl);
-  font-weight: var(--font-weigth-bold);
+  font-weight: var(--font-weight-bold);
 `;
