@@ -5,13 +5,21 @@ import pokemons from '../../data/pokemons.json';
 
 import useSchedulingPriceCalculations from "../../hooks/useSchedulingPriceCalculations";
 import { Scheduling, schedulingSchema } from "../../entities/Scheduling";
+import { PageState } from "../../entities/PageState";
+import { IHttpClient } from "../../infrastructure/httpClient/IHttpClient";
 
 import { ValidationError } from "yup";
-import { useState } from "react";
+import { Dispatch, HTMLAttributes, SetStateAction, useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useInjection } from "inversify-react";
 
-export default function SchedulingForm() {
+
+interface props extends HTMLAttributes<HTMLElement> {
+  setPageState: Dispatch<SetStateAction<PageState>>
+}
+
+export default function SchedulingForm({ setPageState }:props) {
   
   const regionsMap = regions as {[key:string]: string[]};
   const [selectedRegion, setSelectedRegion] = useState(Object.keys(regionsMap)[0]);
@@ -33,6 +41,27 @@ export default function SchedulingForm() {
     });
   }
 
+
+  const httpClient: IHttpClient<string[]> = useInjection("HttpClient");
+  const [dates, setDates] = useState<string[]>([]);
+  const [times, setTimes] = useState<string[]>([]);
+
+  useEffect(()=>{
+    httpClient.get("/scheduling/date")
+    .then((responseData:string[])=>setDates(responseData))
+    .catch(error=>toast.error(error.message, {
+      progress: undefined,
+    }));
+  }, []);
+
+  useEffect(()=>{
+    httpClient.post("/scheduling/time", {date: ""})
+    .then((responseData:string[])=>setTimes(responseData))
+    .catch(error=>toast.error(error.message, {
+      progress: undefined,
+    }));
+  }, []);
+  
   const { validPokemonsAdded, numberOfValidPokemonsAdded, subtotal, managingFee, total } = useSchedulingPriceCalculations(pokemonsAdded);
 
   const {
@@ -41,22 +70,33 @@ export default function SchedulingForm() {
     formState: { errors },
   } = useForm<Scheduling>();
 
-  function completeSchedulingData(data: Scheduling) {
-    const completedData = {
-      ...data,
-      region: selectedRegion,
-      pokemons: validPokemonsAdded,
-    }
+  let buttonClicked = false;
 
-    schedulingSchema.validate(completedData)
-    .then(validatedData=>{
-      console.log(validatedData);
-    })
-    .catch((error: ValidationError)=>{
-      toast.error(error.message, {
-        progress: undefined,
+  function completeSchedulingData(data: Scheduling) {
+    if(buttonClicked) {
+      const completedData = {
+        ...data,
+        region: selectedRegion,
+        pokemons: validPokemonsAdded,
+      }
+  
+      schedulingSchema.validate(completedData)
+      .then(validatedData=>{
+        console.log(validatedData);
+        const randomNumber = Math.floor(Math.random() * 2) + 1;
+        switch(randomNumber){
+          case 1: setPageState("success");
+          case 2: setPageState("fail");
+        }
+      })
+      .catch((error: ValidationError)=>{
+        toast.error(error.message, {
+          progress: undefined,
+        });
       });
-    });
+
+      buttonClicked = false;
+    }
   }
 
   return (  
@@ -136,16 +176,18 @@ export default function SchedulingForm() {
           <SelectLabeled>
             <label>Data para atendimento</label>
             <select defaultValue={"Selecione uma data"} {...register('treatmentDate')}>
-              <option value={"01/02/2024"}>01/02/2024</option>
-              <option value={"02/02/2024"}>02/02/2024</option>
-              <option value={"03/02/2024"}>03/02/2024</option>
+              {dates.map(date=>
+                <option value={date}>{date}</option>
+              )}
             </select>
           </SelectLabeled>
 
           <SelectLabeled>
             <label>Horário de atendimento</label>
             <select defaultValue={"Selecione um horário"} {...register('treatmentHour')}>
-              <option value={"10:00-12:00"}>10:00-12:00</option>
+              {times.map(time=>
+                <option value={time}>{time}</option>
+              )}
             </select>
           </SelectLabeled>
         </ThirdSection>
@@ -182,7 +224,7 @@ export default function SchedulingForm() {
 
         <LastSection>
           <span>Valor Total: R$ {total}</span>
-          <button>Concluir agendamento</button>
+          <button type="submit" onClick={()=>buttonClicked=true}>Concluir agendamento</button>
         </LastSection>
 
       </FormContainer>

@@ -4,15 +4,14 @@ import SchedulingForm from "../../components/SchedulingForm";
 import FailedScheduling from "../../components/FailedScheduling";
 import SuccessfulScheduling from "../../components/SuccessfulScheduling";
 import Layout from "../../components/Layout";
+import { PageState } from "../../entities/PageState";
 
 import { useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-type pageState = "form" | "success" | "fail";
-
 export default function ScheduleAppointment() {
-  const [pageState, setPageState] = useState<pageState>("form");
+  const [pageState, setPageState] = useState<PageState>("form");
   
   return (
     <Layout>
@@ -23,7 +22,7 @@ export default function ScheduleAppointment() {
       />
 
       <Main>
-        {pageState==="form" && <SchedulingForm />}
+        {pageState==="form" && <SchedulingForm setPageState={setPageState}/>}
         {pageState==="fail" && <FailedScheduling />}
         {pageState==="success" && <SuccessfulScheduling />}
       </Main>

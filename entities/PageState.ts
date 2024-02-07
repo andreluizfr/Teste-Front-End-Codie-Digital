@@ -1,0 +1,1 @@
+export type PageState = "form" | "success" | "fail";
