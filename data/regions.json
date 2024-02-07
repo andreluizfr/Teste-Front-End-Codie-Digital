@@ -1,0 +1,60 @@
+{ 
+  "Kanto": [
+    "Pewter City",
+    "Pallet Town",
+    "Veridian City",
+    "Cerulean City",
+    "Vermilion City",
+    "Lavender Town",
+    "Celadon City",
+    "Fuchsia City",
+    "Safari Zone",
+    "Saffron City"
+  ],
+  "Johto": [
+    "New Bark Town",
+    "Cherrygrove City",
+    "Violet City",
+    "Azalea Town",
+    "Goldenrod City",
+    "Ecruteak City",
+    "Olivine City",
+    "Cianwood City",
+    "Mahogany Town",
+    "Blackthorn City"
+  ],
+  "Hoenn": [
+    "Littleroot Town",
+    "Oldale Town",
+    "Petalburg City",
+    "Rustboro City",
+    "Dewford Town",
+    "Slateport City",
+    "Mauville City",
+    "Verdanturf Town",
+    "Fallarbor Town",
+    "Lavaridge Town",
+    "Fortree City",
+    "Lilycove City",
+    "Mossdeep City",
+    "Sootopolis City",
+    "Pacifidlog Town",
+    "Ever Grande City"
+  ],
+  "Sinnoh": [
+    "Twinleaf Town",
+    "Sandgem Town",
+    "Jubilife City",
+    "Oreburgh City",
+    "Floaroma Town",
+    "Eterna City",
+    "Hearthome City",
+    "Solaceon Town",
+    "Veilstone City",
+    "Pastoria City",
+    "Celestic Town",
+    "Canalave City",
+    "Snowpoint City",
+    "Sunyshore City"
+  ]
+}

@@ -12,15 +12,19 @@
 
   --font-primary-color: #000000;
   --font-secondary-color: #ffffff;
+  --font-tertiary-color: #555555;
+  --font-quaternary-color: #999999;
 
+  --font-size-smallest: .5rem;
   --font-size-smaller: .7rem;
   --font-size-small: .8rem;
   --font-size-normal: .9rem;
   --font-size-medium: 1rem;
   --font-size-great-medium: 1.1rem;
   --font-size-large: 1.2rem;
-  --font-size-xl: 1.8rem;
-  --font-size-xxl: 2rem;
+  --font-size-xl: 1.6rem;
+  --font-size-xxl: 1.8rem;
+  --font-size-xxxl: 2rem;
 
   --font-weight-light: 300;
   --font-weight-normal: 400;

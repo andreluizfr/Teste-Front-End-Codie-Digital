@@ -31,7 +31,7 @@ export const BreadcrumbLink = styled.span<{}>`
 
 export const PageTitle = styled.p<{}>`
   color: var(--font-secondary-color);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-xxxl);
   font-weight: var(--font-weight-bold);
 `;
 
