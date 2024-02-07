@@ -1,10 +1,8 @@
 import Yup from 'yup';
 
 import regions from '../data/regions.json';
-//import pokemons from '../data/pokemons.json';
 
 const regionsMap = regions as {[key:string]: string[]};
-//const pokemonsList = pokemons.pokemons as string[];
 
 Yup.addMethod(Yup.string, 'validRegion', function(message) {
   return this.test('validRegion', message, function(value) {
