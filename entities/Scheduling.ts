@@ -1,10 +1,10 @@
-import Yup from 'yup';
+import { addMethod, string, array, object, InferType } from 'yup';
 
 import regions from '../data/regions.json';
 
 const regionsMap = regions as {[key:string]: string[]};
 
-Yup.addMethod(Yup.string, 'validRegion', function(message) {
+addMethod(string, 'validRegion', function(message) {
   return this.test('validRegion', message, function(value) {
 
     if(value !== undefined && Object.keys(regionsMap).includes(value))
@@ -17,16 +17,16 @@ Yup.addMethod(Yup.string, 'validRegion', function(message) {
   });
 });
 
-Yup.StringSchema.prototype.validRegion
-
-let schedulingSchema = Yup.object({
-  name: Yup.string().required(),
-  lastName: Yup.string().required(),
-  region: Yup.string().required().validRegion(),
-  city: Yup.string().required(),
-  pokemons: Yup.array().required().min(1).max(6),
-  treatmentDate: Yup.string().required(),
-  treatmentHour: Yup.string().required(),
+let schedulingSchema = object({
+  name: string().required("O campo nome é requerido."),
+  lastName: string().required("O campo sobrenome é requerido."),
+  region: string().required("O campo região é requerido.").validRegion("Região inválida"),
+  city: string().required("O campo cidade é requerido."),
+  pokemons: array().required("Adicione pelo menos um pokémon").min(1, "Adicione pelo menos um pokémon").max(6, "O limite de pokémons é 6"),
+  treatmentDate: string().required("O campo da data para atendimento é requerido."),
+  treatmentHour: string().required("O campo do horário do atendimento é requerido."),
 });
 
-export type Scheduling = Yup.InferType<typeof schedulingSchema>;
+export { schedulingSchema };
+
+export type Scheduling = InferType<typeof schedulingSchema>;

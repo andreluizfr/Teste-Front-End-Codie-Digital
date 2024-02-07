@@ -3,10 +3,13 @@ import { AddPokemon, Divider, FeeAdvertise, FirstSection, FormContainer, FormTit
 import regions from '../../data/regions.json';
 import pokemons from '../../data/pokemons.json';
 
+import useSchedulingPriceCalculations from "../../hooks/useSchedulingPriceCalculations";
+import { Scheduling, schedulingSchema } from "../../entities/Scheduling";
+
+import { ValidationError } from "yup";
 import { useState } from "react";
 import { useForm } from 'react-hook-form';
-import useSchedulingPriceCalculations from "../../hooks/useSchedulingPriceCalculations";
-import { Scheduling } from "../../entities/Scheduling";
+import { toast } from 'react-toastify';
 
 export default function SchedulingForm() {
   
@@ -44,7 +47,16 @@ export default function SchedulingForm() {
       region: selectedRegion,
       pokemons: validPokemonsAdded,
     }
-    console.log(completedData);
+
+    schedulingSchema.validate(completedData)
+    .then(validatedData=>{
+      console.log(validatedData);
+    })
+    .catch((error: ValidationError)=>{
+      toast.error(error.message, {
+        progress: undefined,
+      });
+    });
   }
 
   return (  
