@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useMediaQuery } from 'react-responsive';
 import { HeaderContainer, LogoContainer, LogoText, NavbarContainer, NavbarItem } from './styles';
 
 export default function Header() {
@@ -17,12 +16,8 @@ export default function Header() {
     });
   }, []);
 
-  const isLargeSize = useMediaQuery({
-    query: '(min-width: 720px)'
-  });
-
   return (
-    <HeaderContainer $isLargeSize={isLargeSize}>
+    <HeaderContainer>
 
       <Link href="/">
         <LogoContainer $hide={hideLogoText}>

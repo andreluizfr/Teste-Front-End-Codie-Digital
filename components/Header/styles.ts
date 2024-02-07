@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header<{$isLargeSize: boolean;}>`
+export const HeaderContainer = styled.header<{}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 85%;
-  margin: ${props => props.$isLargeSize? ".8rem 4rem" : ".8rem 2rem"};
-  flex-direction: ${props => props.$isLargeSize? "row" : "column"};
+  margin: .8rem 2rem;
+  flex-direction: column;
   row-gap: 1rem;
+
+  @media (min-width: 768px) {
+    margin: .8rem 4rem;
+    flex-direction: row;
+  }
 `;
 
 export const LogoContainer = styled.div<{ $hide: boolean; }>`
